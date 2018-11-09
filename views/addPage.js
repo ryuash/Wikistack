@@ -6,16 +6,16 @@ module.exports = () => layout(html`
   <hr>
   <form method="POST" action="/wiki/">
   <div class="form-group">
-  <label for="title" class="col-sm-2 control-label">Name</label>
+  <label for="name" class="col-sm-2 control-label">Name</label>
   <div class="col-sm-10">
-    <input id="title" name="title" type="text" class="form-control"/>
+    <input id="title" name="name" type="text" class="form-control"/>
   </div>
 </div>
 
 <div class="form-group">
-<label for="title" class="col-sm-2 control-label">Email</label>
+<label for="email" class="col-sm-2 control-label">Email</label>
 <div class="col-sm-10">
-  <input id="title" name="title" type="text" class="form-control"/>
+  <input id="title" name="email" type="text" class="form-control"/>
 </div>
 </div>
 
@@ -27,17 +27,17 @@ module.exports = () => layout(html`
     </div>
 
     <div class="form-group">
-    <label for="title" class="col-sm-2 control-label">Your message</label>
+    <label for="content" class="col-sm-2 control-label">Your message</label>
     <div class="col-sm-10">
-      <textarea></textarea>
+      <textarea name="content"></textarea>
     </div>
   </div>
 
   <div class="form-group">
-  <label for="title" class="col-sm-2 control-label">Page Status</label>
+  <label for="status" class="col-sm-2 control-label">Page Status</label>
   <div class="col-sm-10">
-    <input id="title" name="title" type="radio" value="open"/>Open
-    <input id="title" name="title" type="radio" value="closed"/>Closed
+    <input id="title" name="status" type="radio" value="open"/>Open
+    <input id="title" name="status" type="radio" value="closed"/>Closed
   </div>
 </div>
 

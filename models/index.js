@@ -19,6 +19,13 @@ const Page = db.define('page', {
   }
 });
 
+Page.beforeValidate(page=>{
+  //const test =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  //test.replace(/[0-9]/g,'');
+  // for random slug generator;
+    page.slug=page.title.replace(/\s+/g, '_').replace(/\W/g, '');
+});
+
 const User = db.define('user', {
   name: {
     type: Sequelize.STRING,
