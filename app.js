@@ -4,13 +4,16 @@ const app = express();
 const layout = require('./views/layout');
 const { db } = require('./models');
 const models = require('./models');
+const wikiRouter = require('./routes/wiki');
+const userRouter = require('./routes/user');
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false }));
+app.use('/wiki', wikiRouter);
 
 app.get('/', (req, res) => {
-  res.send(layout());
+  res.redirect('/wiki');
 });
 
 // db.authenticate().
