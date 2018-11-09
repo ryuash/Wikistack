@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const app = express();
 const layout = require('./views/layout');
 const { db } = require('./models');
+const models = require('./models');
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
@@ -19,6 +20,17 @@ app.get('/', (req, res) => {
 
 const PORT = 1337;
 
-app.listen(PORT, () => {
-  console.log(`App listening in port ${PORT}`);
-})
+const init = async () => {
+  try {
+    //models.db.sync({force: true})
+    await models.db.sync();
+    app.listen(PORT, () => {
+      console.log(`App listening in port ${PORT}`);
+    });
+  }
+  catch (error){
+    console.error(error.message);
+  }
+};
+
+init();
