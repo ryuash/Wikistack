@@ -36,8 +36,10 @@ module.exports = () => layout(html`
   <div class="form-group">
   <label for="status" class="col-sm-2 control-label">Page Status</label>
   <div class="col-sm-10">
-    <input id="title" name="status" type="radio" value="open"/>Open
-    <input id="title" name="status" type="radio" value="closed"/>Closed
+  <input type="radio" id="title" name="status" value="open">
+  <label for="status">Open</label>
+  <input type="radio" id="title" name="status" value="closed">
+  <label for="status">Closed</label>
   </div>
 </div>
 

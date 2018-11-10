@@ -19,11 +19,27 @@ const Page = db.define('page', {
   }
 });
 
-Page.beforeValidate(page=>{
-  //const test =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  //test.replace(/[0-9]/g,'');
-  // for random slug generator;
+Page.beforeValidate( async page=>{
+  try{
     page.slug=page.title.replace(/\s+/g, '_').replace(/\W/g, '');
+    const slugCheck = await Page.findAll({
+      attributes:['slug'],
+      where:{
+        slug:{
+          $eq:page.slug,
+        }
+      }
+    });
+    if(slugCheck.length){
+      const test =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      test.replace(/[0-9]/g,'');
+      page.slug=test;
+    }
+  }
+  catch(error){
+    console.error(error.message);
+  }
+  // for random slug generator;
 });
 
 const User = db.define('user', {
